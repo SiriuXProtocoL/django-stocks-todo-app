@@ -21,18 +21,27 @@
     <table class="table table-bordered">
     {% for things in all_items %}
         {% if things.completed %}
-            <tr class="table-danger">
-                <td class="striker"><a href="{% url 'edit' things.id %}">{{ things.item }}</a></td>
-                <td><center><a href="{% url 'uncross' things.id %}">UnCross</a></center></td>
-                <td><center><a href="{% url 'delete' things.id %}">Delete</a></center></td>
+            <tr class="table-dark">
+                <td class="striker">{{ things.item }}</td>
+                <td><center>
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <button type="button" class="btn btn-danger"><a href="{% url 'delete' things.id %}">Delete</a></button>
+                    <button type="button" class="btn btn-warning"><a href="{% url 'edit' things.id %}">Edit</a></button>
+                  </div>
+                </center></td>
+                <td><center><button type="button" class="btn btn-success"><a href="{% url 'uncross' things.id %}">UnCross OFF</a></button></center></td>
 
             </tr>
         {% else %}
-            <tr class="table-secondary">
-                <td><a href="{% url 'edit' things.id %}">{{ things.item }}</a></td>
-                <td><center><a href="{% url 'cross_off' things.id %}">Cross OFF</a></center></td>
-                <td><center><a href="{% url 'delete' things.id %}">Delete</a></center></td>
-
+            <tr class="table-dark">
+                <td>{{ things.item }}</td>
+                <td><center>
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="btn btn-danger"><a href="{% url 'delete' things.id %}">Delete</a></button>
+                        <button type="button" class="btn btn-warning"><a href="{% url 'edit' things.id %}">Edit</a></button>
+                      </div>
+                </center></td>
+            <td><center><button type="button" class="btn btn-success"><a href="{% url 'cross_off' things.id %}">Cross OFF</a></button></center></td>
             </tr>
 
         {% endif %}
